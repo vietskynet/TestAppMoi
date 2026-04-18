@@ -1,24 +1,93 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello Languages</title>
+  <title>Say Hello App</title>
+  <style>
+    :root {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color-scheme: light dark;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    }
+
+    .card {
+      width: min(420px, 92vw);
+      padding: 1.5rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      color: #111827;
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem;
+    }
+
+    input, button {
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 1rem;
+      padding: 0.65rem 0.8rem;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: #4f46e5;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    #message {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: 10px;
+      background: #eef2ff;
+      min-height: 1.5rem;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
-  <h1 id="hello">Hello</h1>
+  <main class="card">
+    <h1>👋 Say Hello App</h1>
+    <div class="row">
+      <input id="nameInput" type="text" placeholder="Nhập tên của bạn..." />
+      <button id="helloBtn">Say Hello</button>
+    </div>
+    <p id="message">Hãy nhập tên và nhấn nút.</p>
+  </main>
 
   <script>
-    const greetings = [
-      "Hello", "Xin chào", "Bonjour", "Hola", "Hallo",
-      "Ciao", "こんにちは", "안녕하세요", "你好", "Olá"
-    ];
+    const nameInput = document.getElementById('nameInput');
+    const helloBtn = document.getElementById('helloBtn');
+    const message = document.getElementById('message');
 
-    let i = 0;
-    setInterval(() => {
-      document.getElementById("hello").textContent = greetings[i];
-      i = (i + 1) % greetings.length;
-    }, 1000);
+    const sayHello = () => {
+      const name = nameInput.value.trim();
+      message.textContent = name ? `Xin chào, ${name}!` : 'Xin chào, bạn!';
+    };
+
+    helloBtn.addEventListener('click', sayHello);
+    nameInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') sayHello();
+    });
   </script>
 </body>
 </html>
