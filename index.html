@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello Languages</title>
+</head>
+<body>
+  <h1 id="hello">Hello</h1>
+
+  <script>
+    const greetings = [
+      "Hello", "Xin chào", "Bonjour", "Hola", "Hallo",
+      "Ciao", "こんにちは", "안녕하세요", "你好", "Olá"
+    ];
+
+    let i = 0;
+    setInterval(() => {
+      document.getElementById("hello").textContent = greetings[i];
+      i = (i + 1) % greetings.length;
+    }, 1000);
+  </script>
+</body>
+</html>
